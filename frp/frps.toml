@@ -1,0 +1,13 @@
+bindPort = 7000
+# type=http 时会用到，用于域名访问服务，填写非 80 端口，80和443已经给 caddy 用了
+vhostHTTPPort = 8090
+# vhostHTTPSPort = 4439
+# webServer配置是服务端 Dashboard 的配置
+# 默认为 127.0.0.1，如果需要公网访问，需要修改为 0.0.0.0。
+webServer.addr = "0.0.0.0"
+webServer.port = 7500
+# dashboard 用户名密码，可选，默认为空
+webServer.user = "admin"
+webServer.password = "123456"
+# 身份认证token，客户端和服务端一致才能成功，还可以参考官方文档使用 OIDC
+auth.token = "_change_me_to_your_random_string_"

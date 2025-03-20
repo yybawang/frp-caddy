@@ -1,0 +1,10 @@
+# Docs: https://caddyserver.com/docs/caddyfile
+# 反向代理配置
+yourdomain.com {
+    # 监听 frps.toml 的 vhostHTTPPort 配置端口即可
+    reverse_proxy 服务器私有IP:8090
+}
+www.yourdomain.com {
+    reverse_proxy 服务器私有IP:8090
+}
+

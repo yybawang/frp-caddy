@@ -1,0 +1,35 @@
+# 自己买的低配服务器的公网IP
+serverAddr = "11.22.33.44"
+serverPort = 7000
+# 此处修改为跟服务端token一致即可
+auth.token = "_change_me_to_your_random_string_"
+
+# 仅通过公网 IP:PORT 访问即可，使用 tcp
+[[proxies]]
+name = "Immich"
+type = "tcp"
+# localIP和localPort是你本地想要代理出去的服务
+localIP = "127.0.0.1"
+localPort = 2283
+# remotePort是指要占用服务端具体哪个端口，记得打开服务器对应端口的防火墙
+remotePort = 2283
+
+# [[proxies]]
+# name = "other-api"
+# type = "tcp"
+# # localIP和localPort是你本地想要代理出去的服务
+# localIP = "host.docker.internal"
+# localPort = 8090
+# # remotePort是指要占用服务端具体哪个端口，记得打开服务器对应端口的防火墙
+# remotePort = 8090
+
+
+# 想使用域名访问，就使用 http 并填写域名，本地启用服务并监听 8080 端口
+[[proxies]]
+name = "web"
+type = "http"
+# 如果本地是 docker 运行的需要使用此 host 才能访问到真机端口，因为 127.0.0.1 是访问的容器内
+localIP = "host.docker.internal"
+localPort = 8080
+# 使用到的所有域名，需要提前解析到此文件第一行的服务器IP地址
+customDomains = ["yourdomain.com", "www.yourdomain.com"]

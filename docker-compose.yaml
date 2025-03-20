@@ -1,0 +1,20 @@
+services:
+  caddy:
+    restart: always
+    build: ./caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    network_mode: host
+  frps:
+    image: snowdreamtech/frps
+    restart: always
+    volumes:
+      - ./frp/frps.toml:/etc/frp/frps.toml
+    network_mode: host
+  frpc:
+    image: snowdreamtech/frpc
+    restart: always
+    volumes:
+      - ./frp/frpc.toml:/etc/frp/frpc.toml
+    network_mode: host
